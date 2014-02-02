@@ -1,0 +1,41 @@
+logging{
+  channel simple_log {
+    stderr;
+    severity debug;
+    print-time yes;
+    print-severity yes;
+    print-category yes;
+  };
+  category queries{
+    simple_log;
+  };
+  category default{
+    simple_log;
+  };
+  category default{
+    simple_log;
+  };
+};
+
+options {
+    allow-query-cache { none; };
+    recursion no;
+    directory "/var/cache/bind";
+    dnssec-validation auto;
+
+    listen-on-v6 { any; };
+};
+key ddns {
+    algorithm HMAC-MD5;
+    secret "wX4iItC+rW2tUo2tTCy0JU/1wphqZVdfnq0g1uGsyBeolwToifrXwcC1kQb0sQgvIdP2E8Df/udEFaepeZR7kw==";
+};
+
+zone "ddns.ro" {
+    type master;
+    file  "/etc/bind/ddns.ro.zone";
+    allow-update {
+        key ddns;
+    };
+};
+
+include "/etc/bind/named.conf.default-zones";
