@@ -35,5 +35,5 @@ source ./configure.sh
 
 EXCLUDE=$(echo $ROOT/proc | sed s_//_/_g)
 tar --exclude $EXCLUDE -cf wheezy.$STAMP.tar $ROOT
-mv wheezy.$STAMP.tar images/
-echo built images/wheezy.$STAMP.tar
+mv wheezy.$STAMP.tar ../images/
+echo built ../images/wheezy.$STAMP.tar
