@@ -32,7 +32,7 @@ key ddns {
 
 zone "ddns.ro" {
     type master;
-    file  "/etc/bind/ddns.ro.zone";
+    file  "/etc/bind/dynamic/ddns.ro.zone";
     allow-update {
         key ddns;
     };
