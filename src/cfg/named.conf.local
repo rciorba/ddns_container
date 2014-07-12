@@ -25,14 +25,12 @@ options {
 
     listen-on-v6 { any; };
 };
-key ddns {
-    algorithm HMAC-MD5;
-    secret "wX4iItC+rW2tUo2tTCy0JU/1wphqZVdfnq0g1uGsyBeolwToifrXwcC1kQb0sQgvIdP2E8Df/udEFaepeZR7kw==";
-};
 
-zone "ddns.ro" {
+include "/cfg/devrandom_key.conf";
+
+zone "devrandom.ro" {
     type master;
-    file  "/etc/bind/dynamic/ddns.ro.zone";
+    file  "/etc/bind/dynamic/devrandom.ro.zone";
     allow-update {
         key ddns;
     };
